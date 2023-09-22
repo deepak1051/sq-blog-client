@@ -5,12 +5,11 @@ import Navbar from './components/Navbar';
 
 import CreateBlog from './pages/CreateBlog';
 import SingleBlog from './pages/SingleBlog';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+
 import AuthLayout from './utils/AuthLayout';
+import Fail from './pages/Fail';
 
 function App() {
-  console.log(import.meta.env);
   return (
     <BrowserRouter>
       <Navbar />
@@ -19,6 +18,7 @@ function App() {
         <Route element={<AuthLayout />}>
           <Route element={<CreateBlog />} path="/blogs/new" />
           <Route element={<SingleBlog />} path="/blogs/:id" />
+          <Route element={<Fail />} path="/fail" />
         </Route>
       </Routes>
       {/* <Footer /> */}
