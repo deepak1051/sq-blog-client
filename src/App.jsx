@@ -12,7 +12,7 @@ import useUserData from './hooks/useUserData';
 
 function App() {
   const userQuery = useUserData();
-  console.log(useUserData);
+  console.log(userQuery);
   return (
     <BrowserRouter>
       <Navbar />
