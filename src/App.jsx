@@ -21,7 +21,7 @@ function App() {
           <Route element={<SingleBlog />} path="/blogs/:id" />
         </Route>
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

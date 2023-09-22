@@ -21,6 +21,7 @@ const Home = () => {
 
   if (blogsQuery.isError) return <p>{blogsQuery.error.message}</p>;
 
+  if (blogsQuery.isLoading) return <p>Loading...</p>;
   return (
     <>
       <div className="bg-white pb-6 sm:pb-8 lg:pb-12">

@@ -2,6 +2,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import instance from '../utils/instance';
 
 const url = 'http://localhost:5000/auth/google';
 
@@ -11,8 +12,8 @@ const Navbar = () => {
   const usersQuery = useQuery(
     ['users', 'status'],
     ({ signal }) =>
-      axios
-        .get('http://localhost:5000/api/current_user', {
+      instance
+        .get('/api/current_user', {
           withCredentials: true,
           signal,
         })
@@ -23,8 +24,8 @@ const Navbar = () => {
   const logoutQuery = useQuery(
     ['users', 'logout'],
     ({ signal }) =>
-      axios
-        .get('http://localhost:5000/api/logout', {
+      instance
+        .get('/api/logout', {
           withCredentials: true,
           signal,
         })
@@ -38,7 +39,13 @@ const Navbar = () => {
   );
 
   const handleLogin = () => {
-    window.open('http://localhost:5000/auth/google', '_self');
+    const api_url = import.meta.env.VITE_BACKEND_URL;
+    const url =
+      import.meta.env.MODE === 'development'
+        ? 'http://localhost:5000/auth/google'
+        : `${api_url}/auth/google`;
+
+    window.open(url, '_self');
   };
 
   const handleLogout = () => {
