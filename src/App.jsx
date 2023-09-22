@@ -8,8 +8,11 @@ import SingleBlog from './pages/SingleBlog';
 
 import AuthLayout from './utils/AuthLayout';
 import Fail from './pages/Fail';
+import useUserData from './hooks/useUserData';
 
 function App() {
+  const userQuery = useUserData();
+  console.log(useUserData);
   return (
     <BrowserRouter>
       <Navbar />
@@ -18,8 +21,8 @@ function App() {
         <Route element={<AuthLayout />}>
           <Route element={<CreateBlog />} path="/blogs/new" />
           <Route element={<SingleBlog />} path="/blogs/:id" />
-          <Route element={<Fail />} path="/fail" />
         </Route>
+        <Route element={<Fail />} path="/fail" />
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>
